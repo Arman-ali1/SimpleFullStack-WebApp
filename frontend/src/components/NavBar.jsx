@@ -4,18 +4,30 @@ import Resister from '../../src/components/Resister.jsx';
 // import App from '../../src/App.jsx'
 // import HomePage from './pages/Homepage.jsx'
 import HomePage from "./HomePage.jsx";
+import ShowUser from "../../src/components/ShowUser.jsx";
 
 function NavBar(){
     const[signInn,setSignIn]=useState(false);
+    const[Home1,setHome1]=useState(true);
     const [flag,setFlag] = useState(false);
+    const[showProf,setProf]=useState(false);
     function OpenMenu(){
         setFlag(!flag);
     };
     function signIn(){
         setSignIn(!signInn);
+        // setProf(!showProf);
         setFlag(!flag);
+        // setHome1(!Home1);
     }
 
+    function Loginn(){
+        setProf(!showProf);
+        // setSignIn(!signInn)
+        setHome1(!Home1);
+        setFlag(!flag);
+
+    }
     return(
         <>  
            
@@ -73,8 +85,8 @@ function NavBar(){
                         {
                             flag?<div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             
-                            <button onClick={signIn} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign in</button>
-                            {/* <button onClick={signUp} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</button> */}
+                            <button onClick={signIn} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign up</button>
+                            <button onClick={Loginn} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</button>
                             <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
                             <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                         </div>:<p></p>
@@ -88,8 +100,10 @@ function NavBar(){
  
             </nav>
             {
-                signInn?<Resister></Resister>:<HomePage></HomePage>
+                Home1?(signInn?<Resister></Resister>:<HomePage></HomePage>):
+                (showProf?<ShowUser></ShowUser>:<HomePage></HomePage>)
             }
+            
         </>
     )
 }

@@ -62,6 +62,16 @@ app.get("/getdata",async(req,res)=>{
 
     }
 })
+app.get("/userdata",async(req,res)=>{
+    try{
+        const allData=await userRegistration.find({})
+        res.json(allData)
+    }
+    catch{
+        res.json("fail")
+
+    }
+})
 
 app.listen(8000,()=>{
     console.log("server start at 8000");
