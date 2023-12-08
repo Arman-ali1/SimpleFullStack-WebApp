@@ -100,10 +100,11 @@ function NavBar(){
  
             </nav>
             {
-                Home1?(signInn?<Resister></Resister>:<HomePage></HomePage>):
-                (showProf?<ShowUser></ShowUser>:<HomePage></HomePage>)
+            signInn?<Resister></Resister>:<HomePage></HomePage>
             }
-            
+            {
+                showProf?<ShowUser></ShowUser>:<HomePage></HomePage>
+            }
         </>
     )
 }
